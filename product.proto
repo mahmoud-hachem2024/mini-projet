@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package product;
+
+service Product {
+  rpc allProducts(voidNoParam) returns (productItems);
+  rpc createProduct(productItem) returns (productItems);
+  rpc readProduct(productId) returns (readProductResponse);
+  rpc updateProduct(productItem) returns (readProductResponse);
+  rpc deleteProduct(productId) returns (productItems);
+}
+
+message voidNoParam {}
+
+
+
+message productItem {
+  int32 id = 1;
+  string name = 2;
+  string price = 3;
+}
+
+message readProductResponse {
+productItem product = 1;
+}
+
+message productItems {
+  repeated productItem products = 1;
+}
+
+message productId {
+  int32 id = 1;
+}
